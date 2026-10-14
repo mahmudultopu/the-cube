@@ -7,6 +7,10 @@
   <meta name="description" content="A 3×3 puzzle cube you can play in your browser. Scramble it, beat the clock, and open the step-by-step guide whenever you need it.">
   <meta name="theme-color" content="#eef0f4">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="The Cube">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 
   <!-- Link previews (Facebook, WhatsApp, Messenger) -->
   <meta property="og:type" content="website">
@@ -255,5 +259,11 @@
 
 <script src="assets/vendor/three.min.js"></script>
 <script src="assets/js/game.js"></script>
+<script>
+  // Install as an app and play offline (needs https or localhost).
+  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+  }
+</script>
 </body>
 </html>
